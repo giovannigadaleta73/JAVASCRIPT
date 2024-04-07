@@ -15,9 +15,8 @@
 </head>
 
 <body>
-
-	<details>
-		<summary>BASI JAVASCRIPT</summary>
+	<details data-d="BASI">
+		<summary>BASI</summary>
 		<article>
 			<h1>OGGETTI [<a href="./BASE/oggetti/index.html">link</a>]</h1>
 			<h2>1. Oggetti Letterali</h2>
@@ -34,8 +33,9 @@
 			<h1>RegExp</h1>
 		</article>
 
+
 	</details>
-	<details>
+	<details data-d="ECMAScript2015">
 		<summary>ECMAScript2015</summary>
 		<article>
 			<h1>1. Let e Const</h1>
@@ -94,12 +94,30 @@
 			</p>
 		</article>
 		<article>
-			<h1>11. Iterators e For-Of Loop</h1>
+			<h1>11. Iterators e For-Of Loop e Symbol.Iterator [<a href="/ECMAScript2015/a2015_11/a2015_11.html">link</a>]</h1>
 			<p>Introduzione di iteratori, oggetti che consentono di iterare su collezioni, e il ciclo for-of per
 				attraversare i valori di qualsiasi oggetto iterabile.</p>
+			<p>se vuoi usare un ciclo for...of su un oggetto personalizzato, quel oggetto deve implementare il metodo
+				Symbol.iterator. Gli oggetti nativi come Array, String, Map e Set già implementano questo metodo, quindi
+				puoi iterarli direttamente con for...of. Ma se crei un oggetto personalizzato e vuoi che sia iterabile
+				con for...of, devi definire esplicitamente Symbol.iterator e il metodo next() all'interno di esso.</p>
+			<p>
+				Il ciclo for...of è stato introdotto per iterare su qualsiasi oggetto iterabile. Gli oggetti iterabili includono array, stringhe, mappe, set e qualunque oggetto che implementi il metodo Symbol.iterator
+			</p>
+			<b>esempio con Array</b>
+				<p class="codice">
+					let array = [10, 20, 30, 40];
+					for (let value of array) {
+					  console.log(value); // Stampa 10, 20, 30, 40
+					}
+					
+				</p>
+				<b>for...of e Oggetti Non-Array</b>
+				<p>Gli oggetti JavaScript standard (cioè gli oggetti literal {}) non sono iterabili con for...of a meno che non definiscano esplicitamente un iteratore tramite Symbol.iterator</p>
+				<p class="codice"></p>
 		</article>
 		<article>
-			<h1>12. Parametri di funzione migliorati</h1>
+			<h1>12. Parametri di funzione migliorati [<a href="/ECMAScript2015/a2015_12/a2015_12.html">link</a>]</h1>
 			<p>Include parametri di default, rest parameters e spread operator per gestire gli argomenti delle funzioni
 				in modo più efficace.</p>
 			<p>
@@ -149,7 +167,7 @@
 			<p></p>
 		</article>
 	</details>
-	<details>
+	<details data-d="ECMAScript2016">
 		<summary>ECMAScript2016</summary>
 		<article>
 			<h1>1. Array.prototype.includes [<a href="./ECMAScript2016/a2016_01/index.html">a2016_01</a>]</h1>
@@ -173,7 +191,7 @@
 				console.log(10 ** -1); //0.1</p>
 		</article>
 	</details>
-	<details>
+	<details data-d="ECMAScript2017">
 		<summary>ECMAScript2017</summary>
 		<article>
 			<h1>1. Async/Await [<a href="./ECMAScript2017/a2017_01/a2017_01.html">a2017_01</a>]</h1>
@@ -221,7 +239,7 @@
 			</p>
 		</article>
 	</details>
-	<details>
+	<details data-d="ECMAScript2018">
 		<summary>ECMAScript2018</summary>
 		<article>
 			<h1>1. Operator Spread/Rest Properties per gli oggetti [<a href="./VARIE/IIFE/index.html">link</a>]</h1>
@@ -302,7 +320,7 @@
 		</article>
 
 	</details>
-	<details>
+	<details data-d="ECMAScript2019">
 		<summary>ECMAScript2019</summary>
 		<article>
 			<h1>1. Array.prototype.flat()</h1>
@@ -316,7 +334,7 @@
 			</p>
 		</article>
 	</details>
-	<details>
+	<details data-d="VARIE">
 		<summary>VARIE</summary>
 		<article>
 			<h1>1. IIFE (Immediately Invoked Function Expression) [<a href="./VARIE/IIFE/index.html">link</a>]</h1>
@@ -332,39 +350,46 @@
 			<p> ha 2 parametri: 1. funzione 2. intervallo di tempo in ms</p>
 
 		</article>
-
 		<article>
-			<h1>Factory Function e Fx che restituiscono oggetti [<a href="./VARIE/Funzioni/index.html">link</a>]
+			<h1>3. Factory Function e Fx che restituiscono oggetti [<a href="./VARIE/Funzioni/index.html">link</a>]
 			</h1>
 			<p><b>Factory Function</b> usata per creare più istanze. Non usa il new ma crea ugualmente l'oggetto
 				this</p>
 			<p><b>Function che restituiscono oggetti</b> usate per personalizzare un singolo oggetto</p>
 
 		</article>
-
+		<article>
+			<h1>4. Computed property names degli Oggetti</h1>
+			<p>Permette di utilizzare un valore variabile o calcolato come nome della proprietà o del metodo</p>
+			<p class="codice">
+				let propName = "dynamicName";
+				let obj = {
+				[propName]: "value1"
+				};
+				console.log(obj.dynamicName); // Outputs: value1
+			</p>
+		</article>
 	</details>
 
 
 
 	<!-- 
+
+
 			<article >
-				<h1></h1>
+				<h1> [<a href="/ECMAScript2015/a2015_13/index.html">link</a>]</h1>
 				<p></p>
 				<p class="codice"></p>
 			</article>
-
-			<summary class="none">
-				<article class="elevate">
-					<nav>
-						<div class="max">
-							<h3>ECMAScript2016</h3>
-						</div><i>expand_more</i>
-					</nav>
+		
+			<details>
+				<summary></summary>
+				<article >
+					<h1></h1>
+					<p></p>
+					<p class="codice"></p>
 				</article>
-			</summary>
-
-
-
+			</details>
 
 	-->
 </body>

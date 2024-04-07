@@ -4,13 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<link rel="stylesheet" href="/style.css">
+	<link rel="stylesheet" href="../../style.css">
 </head>
 <body>
-	<a value="HOME" href="/index.html">HOME</a>
-	<p class="codice">
+	<a value="HOME" href="../../index.html">HOME</a>
+	Il ciclo for...of è utilizzato per iterare su strutture dati iterabili come array, stringhe, mappe, set e qualsiasi oggetto che implementa il metodo Symbol.iterator. Nel nostro esempio, l'oggetto range è reso iterabile definendo un metodo [Symbol.iterator]() che restituisce un iteratore.
 
-	</p>
+	Il ciclo for...of funziona così:
+	
+	Inizio del Ciclo: Ad ogni iterazione, il ciclo chiama il metodo next() dell'iteratore.
+	Ottenimento del Valore: Il metodo next() verifica se ci sono ancora valori da iterare. Se sì, restituisce un oggetto { value: ..., done: false }.
+	Stampa del Valore: Il valore restituito (value) viene utilizzato nel corpo del ciclo, dove nel nostro caso viene stampato con console.log(num).
+	Controllo del Completamento: Il ciclo continua fino a quando il metodo next() restituisce { done: true }, indicando che non ci sono altri valori da iterare.
+	Questo esempio dimostra come un oggetto personalizzato possa essere reso iterabile e come possa essere utilizzato in modo simile a un array o ad altre collezioni iterabili in JavaScript. Spero che questo chiarisca come funziona il ciclo for...of con l'iteratore definito attraverso Symbol.iterator.
 	<script src="/ECMAScript2015/a2015_11/a2015_11.js"></script>
 </body>
 
