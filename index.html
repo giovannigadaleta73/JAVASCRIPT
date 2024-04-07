@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- 
+	<link href="https://cdn.jsdelivr.net/npm/beercss@3.5.1/dist/cdn/beer.min.css" rel="stylesheet">
+	<script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.5.1/dist/cdn/beer.min.js"></script>
+	<script type="module"
+		src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.0/dist/cdn/material-dynamic-colors.min.js"></script>
+	-->
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<details>
+		<summary>BASI JAVASCRIPT</summary>
+		<article>
+			<h1>OGGETTI [<a href="./BASE/oggetti/index.html">link</a>]</h1>
+			<h2>1. Oggetti Letterali</h2>
+			<h2>2. Oggetti Creati da Costruttori</h2>
+			<h2>3. Istanze di Classi</h2>
+			<h2>4. Oggetti Singleton tramite new Object()</h2>
+			<h2>5. Oggetti Function</h2>
+			<h2>6. Oggetti Array</h2>
+			<h2>7. Oggetti Globali</h2>
+			<h2>8. Oggetti Prototipo</h2>
+			<h2>9. Oggetti creati con Object.create()</h2>
+		</article>
+		<article>
+			<h1>RegExp</h1>
+		</article>
+
+	</details>
+	<details>
+		<summary>ECMAScript2015</summary>
+		<article>
+			<h1>1. Let e Const</h1>
+			<p>Nuove parole chiave per la dichiarazione di variabili, offrendo opzioni con scope a blocco (let) e
+				costanti immutabili (const).</p>
+		</article>
+		<article>
+			<h1>2. Classi</h1>
+			<p>Sintassi più chiara e semplice per creare classi e gestire l'ereditarietà, avvicinando JavaScript agli
+				altri linguaggi di programmazione orientati agli oggetti.
+			</p>
+		</article>
+		<article>
+			<h1>3. Moduli</h1>
+			<p>Supporto nativo per i moduli, permettendo di esportare e importare esplicitamente funzioni, oggetti o
+				primitive da un modulo all'altro.
+			</p>
+		</article>
+		<article>
+			<h1>4. Template Literal</h1>
+			<p>Stringhe che permettono di incorporare espressioni, migliorando la leggibilità del codice quando si
+				manipolano stringhe o si creano stringhe multilinea.
+			</p>
+		</article>
+		<article>
+			<h1>5. Destructuring Assignment</h1>
+			<p>Permette di estrarre dati da array o oggetti in variabili separate tramite una sintassi che riflette la
+				costruzione dell'array o dell'oggetto.
+			</p>
+		</article>
+		<article>
+			<h1>6. Default, Rest, e Spread Parameters</h1>
+			<p>Funzionalità per gestire parametri di funzione in modo più flessibile, inclusa l'assegnazione di valori
+				di default, la raccolta di argomenti residui in un array, e l'espansione di un array in singoli
+				argomenti.
+			</p>
+		</article>
+		<article>
+			<h1>7. Arrow Functions [<a href="./ECMAScript2015/a2015_07/a2015_07.html">a2015_07</a>]</h1>
+			<p>Introduce una sintassi più breve per scrivere funzioni, oltre a condividere lo stesso this del contesto
+				circostante</p>
+		</article>
+		<article>
+			<h1>8. Promises</h1>
+			<p>Supporto nativo per la programmazione asincrona, permettendo di gestire in modo più semplice operazioni
+				asincrone.</p>
+		</article>
+		<article>
+			<h1>9. Map e Set</h1>
+			<p>Nuove strutture di dati per la gestione di collezioni di valori unici (Set) e coppie chiave-valore (Map).
+			</p>
+		</article>
+		<article>
+			<h1>10. Symbol</h1>
+			<p>Un nuovo tipo primitivo che può essere usato come identificatore univoco di proprietà degli oggetti.
+			</p>
+		</article>
+		<article>
+			<h1>11. Iterators e For-Of Loop</h1>
+			<p>Introduzione di iteratori, oggetti che consentono di iterare su collezioni, e il ciclo for-of per
+				attraversare i valori di qualsiasi oggetto iterabile.</p>
+		</article>
+		<article>
+			<h1>12. Parametri di funzione migliorati</h1>
+			<p>Include parametri di default, rest parameters e spread operator per gestire gli argomenti delle funzioni
+				in modo più efficace.</p>
+			<p>
+				<b>Parametri di Default</b>
+				I parametri di default permettono di assegnare valori predefiniti ai parametri di una funzione, che
+				vengono utilizzati qualora non venga passato alcun valore o venga passato undefined.
+			</p>
+			<p class="codice">
+				function saluta(nome = "Visitatore") {
+				console.log(`Ciao, ${nome}!`);
+				}
+
+				saluta(); // Output: Ciao, Visitatore!
+				saluta("Giovanni"); // Output: Ciao, Giovanni!
+			</p>
+			<p><b>Rest Parameters</b>
+				I rest parameters permettono di rappresentare un numero indefinito di argomenti come un array. Ciò è
+				utile quando non sai quanti argomenti verranno passati alla tua funzione.</p>
+			<p class="codice">
+				function somma(...numeri) {
+				return numeri.reduce((totale, num) => totale + num, 0);
+				}
+
+				console.log(somma(1, 2, 3)); // Output: 6
+				console.log(somma(1, 2, 3, 4, 5)); // Output: 15
+			</p>
+
+		</article>
+		<article>
+			<h1>13. Reflect e Proxy [<a href="/ECMAScript2015/a2015_13/index.html">link</a>]</h1>
+			<p> Nuove API per la metaprogrammazione, consentendo di intercettare e definire comportamenti personalizzati
+				per operazioni fondamentali su oggetti.</p>
+			<p class="codice">
+				let ob1 = Object.create({name: "Mario"})
+
+				Reflect.defineProperty(ob1, 'nome', {value: 'Giovanni'})
+				console.log(Reflect.get(ob1,'nome'))
+			</p>
+		</article>
+		<article>
+			<h1></h1>
+			<p></p>
+			<p class="codice"></p>
+		</article>
+		<article>
+			<h1></h1>
+			<p></p>
+		</article>
+	</details>
+	<details>
+		<summary>ECMAScript2016</summary>
+		<article>
+			<h1>1. Array.prototype.includes [<a href="./ECMAScript2016/a2016_01/index.html">a2016_01</a>]</h1>
+			<p>Questo metodo consente di determinare se un array include un determinato elemento,
+				restituendo true o false a seconda del caso. È una scorciatoia più leggibile rispetto all'utilizzo
+				precedente di Array.prototype.indexOf() per verificare la presenza di un elemento in un array.</p>
+
+			<p class="codice">
+				const arr = [1, 2, 3];
+
+				console.log(arr.includes(2)); // true
+				console.log(arr.includes(4)); // false
+			</p>
+		</article>
+		<article>
+			<h1>2. L'operatore di esponenziazione (**) [<a href="./ECMAScript2016/a2016_02/a2016_02.html">a2016_02</a>]
+			</h1>
+			<p></p>
+			<p class="codice">
+				console.log(2 ** 3); // 8
+				console.log(10 ** -1); //0.1</p>
+		</article>
+	</details>
+	<details>
+		<summary>ECMAScript2017</summary>
+		<article>
+			<h1>1. Async/Await [<a href="./ECMAScript2017/a2017_01/a2017_01.html">a2017_01</a>]</h1>
+			<p>codice asincrono più leggibile e simile a codice sincrono tradizionale</p>
+			<p class="codice">
+				async function fetchData() {
+				const data = await fetch('url');
+				const json = await data.json();
+				console.log(json);
+				}
+
+			</p>
+		</article>
+		<article>
+			<h1>2. Object.values() e Object.entries() [<a href="./ECMAScript2017/a2017_02/a2017_02.html">a2017_02</a>]
+			</h1>
+			<p>Object.values(obj) restituisce un array dei valori delle proprietà enumerabili di un oggetto.
+				<br>Object.entries(obj) restituisce un array delle coppie chiave-valore delle proprietà enumerabili
+				di un oggetto.
+			</p>
+			<p class="codice">
+				const obj = { a: 1, b: 2, c: 3 };
+				console.log(Object.values(obj)); // [1, 2, 3]
+				console.log(Object.entries(obj)); // [['a', 1], ['b', 2], ['c', 3]]
+
+			</p>
+		</article>
+		<article>
+			<h1>3. String padding [<a href="./ECMAScript2017/a2017_03/a2017_03.html">a2017_03</a>]</h1>
+			<p><b>String.prototype.padStart() e String.prototype.padEnd()</b> permettono di aggiungere padding
+				all'inizio o alla fine di una stringa, rispettivamente.</p>
+			<p class="codice">
+				console.log('ES8'.padStart(4, '0')); // "0ES8"
+				console.log('ES8'.padEnd(4, '!')); // "ES8!"
+			</p>
+		</article>
+		<article>
+			<h1>4. Object.getOwnPropertyDescriptors() [<a href="./ECMAScript2017/a2017_04/a2017_04.html">a2017_04</a>]
+			</h1>
+			<p>Restituisce tutti i descrittori di proprietà proprie di un oggetto, inclusi quelli non enumerabili.
+			</p>
+			<p class="codice">
+				const obj = { a: 1 };
+				console.log(Object.getOwnPropertyDescriptors(obj));
+			</p>
+		</article>
+	</details>
+	<details>
+		<summary>ECMAScript2018</summary>
+		<article>
+			<h1>1. Operator Spread/Rest Properties per gli oggetti [<a href="./VARIE/IIFE/index.html">link</a>]</h1>
+			<p>Gli operatori Spread e Rest, precedentemente disponibili solo per gli array, sono stati estesi agli
+				oggetti.
+				Questo permette una copia più semplice delle proprietà da un oggetto all'altro.</p>
+			<b>Spread</b>
+			<p class="codice">
+				const obj1 = { a: 1, b: 2 };
+				const obj2 = { ...obj1, c: 3 }; // { a: 1, b: 2, c: 3 }
+			</p>
+			<b>Rest Properties</b>
+			<p class="codice">
+				let { a, ...x } = { a: 1, b: 2, c: 3 };
+				console.log(x); // { b: 2, c: 3 }
+			</p>
+		</article>
+		<article>
+			<h1>2. Asynchronous Iteration</h1>
+			<p>Consente di utilizzare for-await-of per iterare su dati asincroni, ad esempio per leggere da uno stream.
+			</p>
+			<p class="codice">
+				async function asyncIterable() {
+				let arr = [1, 2, 3];
+				for await (let value of arr) {
+				console.log(value);
+				}
+				}
+				asyncIterable();
+			</p>
+		</article>
+		<article>
+			<h1>3. Promise.prototype.finally()</h1>
+			<p>permette di eseguire del codice alla conclusione di una Promise, indipendentemente dal suo esito (sia
+				resolve che reject).</p>
+			<p class="codice">
+				let promise = Promise.resolve(123);
+				promise.then(value => console.log(value))
+				.finally(() => console.log("Completed")); // Outputs: 123, Completed
+			</p>
+		</article>
+		<article>
+			<h1>4. Template Literals migliorati</h1>
+		</article>
+		<article>
+			<h1>5. RegExp features</h1>
+			<p>ECMAScript 2018 ha introdotto diverse nuove funzionalità per le espressioni regolari, come il supporto
+				per named capture groups, unicode property escapes, lookahead e lookbehind assertions.</p>
+			<b>Named Capture Groups</b>
+			<p class="codice">
+				let regex = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+							let match = regex.exec("2021-08-23");
+							console.log(match.groups.year); // "2021"
+			</p>
+			<b>Lookbehind Assertion</b>
+			<p class="codice">
+				let regex = /(?<=\$)\d+ /; console.log("Cost: $100".match(regex)); // ["100"] </p>
+					<b>RegExp dotAll flag</b>
+					<p>La flag s consente al carattere . nelle espressioni regolari di corrispondere anche ai
+						terminatori di linea, che normalmente non farebbe</p>
+					<p class="codice">
+						let regex = /foo.bar/s;
+						console.log(regex.test("foo\nbar")); // true
+					</p>
+					<b>Unicode Property Escapes in RegExp</b>
+					<p>
+						Permette di usare le proprietà Unicode nei caratteri delle espressioni regolari.
+					</p>
+					<p class="codice">
+						let regex = /\p{Script=Greek}/u;
+						console.log(regex.test('α')); // true
+					</p>
+		</article>
+		<article>
+			<h1></h1>
+			<p></p>
+			<p class="codice"></p>
+		</article>
+
+	</details>
+	<details>
+		<summary>ECMAScript2019</summary>
+		<article>
+			<h1>1. Array.prototype.flat()</h1>
+			<p>Questa funzione appiattisce gli array annidati fino a una profondità specificata. È utile per lavorare
+				con array di array.</p>
+			<p class="codice">
+				const arr = [1, [2, [3, [4]]]];
+				console.log(arr.flat()); // Output: [1, 2, [3, [4]]]
+				console.log(arr.flat(2)); // Output: [1, 2, 3, [4]]
+
+			</p>
+		</article>
+	</details>
+	<details>
+		<summary>VARIE</summary>
+		<article>
+			<h1>1. IIFE (Immediately Invoked Function Expression) [<a href="./VARIE/IIFE/index.html">link</a>]</h1>
+			<p>Invoca immediatamente il codie contenuto nella prima coppia di parentesi (...)();
+				Posso passare parametri inserendoli nella seconda coppia di parentesi ()(...);
+				Le funzioni definite nelle IIFE non sono riutilizzabili al di fuori della IIFE.
+				Serve ad evitare conflitti di nomi.
+			</p>
+
+		</article>
+		<article>
+			<h1>setInterval [<a href="./VARIE/setInterval/index.html">link</a>]</h1>
+			<p> ha 2 parametri: 1. funzione 2. intervallo di tempo in ms</p>
+
+		</article>
+
+		<article>
+			<h1>Factory Function e Fx che restituiscono oggetti [<a href="./VARIE/Funzioni/index.html">link</a>]
+			</h1>
+			<p><b>Factory Function</b> usata per creare più istanze. Non usa il new ma crea ugualmente l'oggetto
+				this</p>
+			<p><b>Function che restituiscono oggetti</b> usate per personalizzare un singolo oggetto</p>
+
+		</article>
+
+	</details>
+
+
+
+	<!-- 
+			<article >
+				<h1></h1>
+				<p></p>
+				<p class="codice"></p>
+			</article>
+
+			<summary class="none">
+				<article class="elevate">
+					<nav>
+						<div class="max">
+							<h3>ECMAScript2016</h3>
+						</div><i>expand_more</i>
+					</nav>
+				</article>
+			</summary>
+
+
+
+
+	-->
+</body>
+<style>
+</style>
+
+</html>

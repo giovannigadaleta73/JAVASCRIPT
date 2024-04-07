@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<a value="HOME" href="/index.html">HOME</a>
+	<h2>7. Arrow Functions</h2>
+	<p><b>this</b> mantiene il suo valore dal contesto circostante.</p>
+	<p class="codice">
+		function Contatore() {
+			this.numero = 0; 
+			 let f = () => {
+				this.numero++;
+				console.log(this.numero)
+			  }
+			  f(); 
+			  f(); 
+		  }
+		  let pro1 = new Contatore();
+	</p>
+	<p>Utilizzato con <b>IIFE</b></p>
+	<p class="codice">
+		function Contatore2() {
+			this.numero = 0; 
+			 (() => {
+				this.numero++;
+				console.log(this.numero)
+			  })();  
+		  }
+	</p>
+	<p>Considerazioni su <b>this</b> e <b>new</b></p>
+	<p class="codice">
+		function Contatore() {
+			this.numero = 0;
+			let f = () => {
+			  this.numero++;
+			  console.log(this.numero);
+			};
+			f();
+			f();
+		  }
+		  
+		  let prova1 = new Contatore(); // Stampa 1 seguito da 2
+		  let prova2 = new Contatore(); // Stampa 1 seguito da 2
+		  //Senza new
+		  //Se chiami Contatore() senza new:
+		  
+		  
+		  let prova3 = Contatore();
+	</p>
+	<p>La funzione viene eseguita normalmente, ma this all'interno di 
+		Contatore non si riferisce a un nuovo oggetto istanza di Contatore. 
+		Invece, a seconda del contesto in cui Contatore è chiamato, this potrebbe 
+		riferirsi all'oggetto globale (window in un browser, global in Node.js) o 
+		essere undefined in strict mode ("use strict";). Questo significa che stai 
+		potenzialmente modificando o accedendo a variabili globali, il che non è di 
+		solito ciò che vuoi.
+		In questo caso specifico, senza new, l'incremento e la stampa di this.numero 
+		avrebbero luogo, ma potrebbero non comportarsi come previsto a causa 
+		del contesto di this.</p>
+	<p></p>
+	<p class="codice"></p>
+
+	<script src="/ECMAScript2015/a2015_07/a2015_07.js"></script>
+</body>
+
+</html>

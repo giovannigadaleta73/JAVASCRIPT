@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+	<a value="HOME" href="/index.html">HOME</a>
+	<h2>Funzioni Factory</h2>
+	<p>Nel mondo della programmazione, le funzioni factory e le funzioni che restituiscono
+		oggetti sono due concetti che spesso vengono utilizzati per creare nuove istanze di oggetti,
+		ma seguono approcci leggermente diversi. Ecco un confronto tra i due, con esempi
+		per illustrare meglio le differenze.
+
+		Funzioni Factory
+		Una funzione factory è una funzione che restituisce una nuova istanza di un oggetto
+		ogni volta che viene chiamata. Le funzioni factory sono particolarmente utili quando
+		abbiamo bisogno di creare molte istanze di oggetti che condividono la stessa struttura
+		ma possono avere valori di proprietà diversi. Questo approccio è utile per implementare
+		concetti come l'incapsulamento e per mantenere separati i dettagli di implementazione
+		dalla creazione dell'oggetto.
+
+		Vantaggi:
+
+		Forniscono un modo semplice per creare oggetti senza richiedere l'uso del new.
+		Possono restituire qualsiasi tipo di valore, offrendo una maggiore flessibilità.
+		Sono utili per creare oggetti con uno stato o comportamenti privati, utilizzando le chiusure.
+		Utilizzo migliore:
+
+		Quando abbiamo bisogno di creare molteplici istanze di oggetti che hanno proprietà o metodi simili.
+		Per l'incapsulamento e per nascondere i dettagli di implementazione degli oggetti creati.
+	</p>
+	<p class="codice">
+		function autoFactory(marca, modello) {
+		return {
+		marca: marca,
+		modello: modello,
+		info: function() {
+		console.log(`Questa è una ${this.marca} ${this.modello}.`);
+		}
+		};
+		}
+
+		const auto1 = autoFactory('Fiat', '500');
+		const auto2 = autoFactory('Tesla', 'Model S');
+		auto1.info(); // Questa è una Fiat 500.
+		auto2.info(); // Questa è una Tesla Model S.
+
+	</p>
+	<h2>Funzioni che Restituiscono Oggetti</h2>
+
+	<p>
+		Una funzione che restituisce un oggetto è simile a una funzione factory,
+		ma non è necessariamente utilizzata per creare più istanze di un tipo di oggetto.
+		Queste funzioni possono semplicemente costruire e restituire un oggetto
+		basato su alcuni input, e non hanno l'intenzione esplicita di essere usate come factory.
+
+		Vantaggi:
+
+		Sono semplici da scrivere e capire, specialmente per casi d'uso singoli o oggetti
+		che non richiedono la creazione di molteplici istanze.
+		Possono essere utilizzate per restituire oggetti complessi configurati in base ai
+		parametri di ingresso.
+		Utilizzo migliore:
+
+		Quando è necessario un oggetto con una configurazione specifica, e non si prevede
+		la necessità di creare istanze multiple.
+		In contesti in cui la creazione dell'oggetto è un caso unico e non parte di una
+		produzione di massa.
+	</p>
+	<p class="codice">
+		function creaConfigurazione(url, metodo) {
+		return {
+		url: url,
+		metodo: metodo,
+		timeout: 5000,
+		headers: {
+		'Content-Type': 'application/json'
+		}
+		};
+		}
+
+		const config = creaConfigurazione('https://api.example.com', 'POST');
+		console.log(config);
+
+	</p>
+	<p>
+		<b>Differenze chiave</b>
+
+		Intento: Le funzioni factory sono progettate con l'intento di essere utilizzate
+		ripetutamente per creare nuove istanze di oggetti, mentre le funzioni che restituiscono
+		oggetti possono essere semplicemente un modo per costruire un oggetto in un caso specifico.
+		Flessibilità vs. Semplicità: Le funzioni factory offrono una maggiore flessibilità per
+		l'incapsulamento e la creazione di oggetti con differenti configurazioni, mentre le funzioni
+		che restituiscono oggetti tendono a essere più dirette e semplici, ideali per configurazioni
+		o casi d'uso specifici.
+	</p>
+
+	<script src="/VARIE/Funzioni/code.js"></script>
+</body>
+
+</html>

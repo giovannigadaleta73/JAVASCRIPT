@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+	<a value="HOME" href="/index.html">HOME</a>
+	<p class="codice">
+		let ob1 = Object.create({name: "Mario"})
+
+		Reflect.defineProperty(ob1, 'nome', {value: 'Giovanni'})
+		console.log(Reflect.get(ob1,'nome'))
+	</p>
+	<h3>Proxy</h3>
+	<p>I Proxy in JavaScript forniscono un modo potente e flessibile per intercettare e
+		personalizzare le operazioni su oggetti, come la lettura di proprietà, l'assegnazione,
+		l'enumerazione e la funzione di invocazione. Un proxy agisce come un intermediario
+		tra il codice che opera su un oggetto e l'oggetto stesso, permettendo di definire
+		comportamenti personalizzati per operazioni fondamentali (ad esempio, ottenere/definire
+		proprietà, enumerazione, funzione di chiamata, etc.).
+
+		Creazione di un Proxy
+		Per creare un proxy, si utilizza il costruttore Proxy che accetta due argomenti:
+
+		target: L'oggetto originale su cui si desidera intercettare le operazioni.
+		handler: Un oggetto che definisce le funzioni, note come "trappole", per i vari tipi
+		di operazioni che si possono intercettare.</p>
+	<p class="codice">
+		let target = {};
+		let handler = {
+		get(target, prop, receiver) {
+		console.log(`Accesso alla proprietà '${prop}'`);
+		return Reflect.get(...arguments);
+		}
+		};
+
+		let proxy = new Proxy(target, handler);
+		proxy.test; // Accesso alla proprietà 'test'
+
+	</p>
+	<p>
+		<b>Trappole Comuni</b>
+		Il handler può definire diverse "trappole", cioè metodi che intercettano specifiche operazioni.
+		Ecco alcune delle trappole più comuni:
+
+		get(target, prop, receiver): Intercepisce l'accesso a una proprietà.
+		set(target, prop, value, receiver): Intercepisce l'assegnazione di valore a una proprietà.
+		has(target, prop): Intercepisce l'operazione in, usata per verificare se una proprietà esiste nell'oggetto.
+		deleteProperty(target, prop): Intercepisce l'eliminazione di una proprietà.
+		apply(target, thisArg, argumentsList): Intercepisce la chiamata di una funzione.
+		construct(target, args, newTarget): Intercepisce le chiamate al costruttore quando viene usato new.
+	</p>
+	<p class="codice">
+		let target = { message: "Ciao mondo" };
+		let handler = {
+		get(target, prop, receiver) {
+		return `Valore intercettato: ${target[prop]}`;
+		},
+		set(target, prop, value, receiver) {
+		console.log(`Impostazione di '${prop}' a '${value}'`);
+		target[prop] = value;
+		return true; // Indica che l'assegnazione è andata a buon fine
+		}
+		};
+
+		let proxy = new Proxy(target, handler);
+
+		console.log(proxy.message); // Valore intercettato: Ciao mondo
+		proxy.message = "Ciao di nuovo"; // Impostazione di 'message' a 'Ciao di nuovo'
+
+	</p>
+	<p>
+		<b>Uso Avanzato</b>
+		I Proxy sono strumenti potenti e possono essere utilizzati per molti scopi avanzati, inclusi:
+
+		Validazione di input quando si impostano le proprietà.
+		Logging e debugging, registrando l'accesso alle proprietà o le chiamate di metodo.
+		Programmazione orientata agli aspetti, permettendo di inserire codice prima o dopo l'esecuzione di metodi
+		specifici.
+		Creazione di oggetti "virtuali", come lazy loading di proprietà o simulazione di rete di oggetti non presenti
+		localmente.
+		Tuttavia, mentre i Proxy offrono capacità potenti, dovrebbero essere usati con attenzione poiché possono
+		complicare il
+		flusso del codice e rendere più difficile il debugging se usati in modo eccessivo o inappropriato.
+	</p>
+
+
+	<script src="/ECMAScript2015/a2015_13/a2015_13.js"></script>
+</body>
+
+</html>

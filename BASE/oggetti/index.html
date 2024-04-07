@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="javascript/style.css" >
+</head>
+
+<body>
+	<main>
+	<a value="HOME" href="/index.html">HOME</a>
+	<p>OGGETTI</p>
+	<p> Gli oggetti in js si possono claddificare in base allo scopo e modo di creazione.</p>
+	<h2>1. Oggetti Letterali</h2>
+	<p class="codice">
+		let oggetto = {
+		nome: 'Mario',
+		eta: 30
+		};
+	</p>
+
+	<h2>2. Oggetti Creati da Costruttori</h2>
+	<p>Questi oggetti vengono creati usando funzioni costruttrici insieme alla parola chiave <b>new</b>.
+		JavaScript offre diversi costruttori integrati
+		come Object, Array, Function, Date, RegExp, Error, e altri.</p>
+	<p class="codice">
+		let data = new Date();
+		let array = new Array(1, 2, 3);
+	</p>
+
+	<h2>3. Istanze di Classi</h2>
+	<p>Con l'introduzione delle classi in ES6, puoi definire classi e creare
+		istanze di queste classi usando new. Le classi possono essere viste
+		come un "zucchero sintattico" sopra le funzioni costruttrici per facilitare
+		la creazione di oggetti e l'ereditarietà.</p>
+	<p class="codice">
+		class Persona {
+		constructor(nome) {
+		this.nome = nome;
+		}
+		}
+		let persona = new Persona('Mario');
+	</p>
+
+	<h2>4. Oggetti Singleton tramite new Object()</h2>
+
+	<h2>5. Oggetti Function</h2>
+	<p>Le funzioni in JavaScript sono oggetti di prima classe, il che significa che
+		possono avere proprietà e metodi, essere assegnate a variabili,
+		passate come argomenti o restituite da altre funzioni.</p>
+	<p class="codice">
+		function saluta() {
+		console.log('Ciao');
+		}
+		saluta.messaggio = 'Benvenuto';
+	</p>
+
+	<h2>6. Oggetti Array</h2>
+	<p>Gli array in JavaScript sono oggetti specializzati per rappresentare
+		collezioni di dati ordinati e accessibili tramite indice.</p>
+	<p class="codice">
+		let numeri = [1, 2, 3];
+	</p>
+
+	<h2>7. Oggetti Globali</h2>
+	<p>Sono oggetti che esistono automaticamente nell'ambiente di esecuzione globale.
+		Esempi includono oggetti globali come Math, JSON, e altri specifici
+		dell'ambiente come window nel browser e global in Node.js.</p>
+
+	<h2>8. Oggetti Prototipo</h2>
+	<p>Ogni funzione in JavaScript ha una proprietà prototype che è un oggetto.
+		Questo oggetto prototype viene usato quando crei istanze di quella funzione tramite new.
+		Gli oggetti creati erediteranno da questo oggetto prototype</p>
+	<p class="codice"></p>
+
+	<h2>9. Oggetti creati con Object.create()</h2>
+	<p>Object.create(proto[, propertiesObject]) crea un nuovo oggetto con l'oggetto
+		prototipo specificato e, opzionalmente, proprietà specificate.</p>
+	<p class="codice">
+		let oggetto = Object.create(null); // crea un oggetto senza prototipo
+	</p>
+
+	<h1>Differenze</h1>
+	<p>sia gli oggetti letterali che quelli creati tramite funzioni costruttrici 
+		ereditano il comportamento di base dal prototipo Object.prototype, inclusa 
+		la disponibilità del metodo toString(). La differenza principale tra i due modi 
+		di creare oggetti non riguarda l'accesso ai metodi come toString(), ma piuttosto 
+		come si struttura il codice, si gestisce l'ereditarietà e si realizzano istanze 
+		multiple con comportamenti condivisi.</p>
+	
+	<!-- 
+	<h2></h2>
+	<p></p>
+	<p class="codice"></p>
+
+-->
+</main>
+<script src="/VARIE/IIFE/code.js"></script>
+</body>
+
+</html>
