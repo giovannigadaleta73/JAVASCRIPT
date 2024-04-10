@@ -11,8 +11,31 @@
 <body>
 	<main>
 	<a value="HOME" href="../../index.html">HOME</a>
-	
- 
+	<h2>reduce() per creare un oggetto</h2>
+	<p>Quando fai il return newObj dentro la funzione di callback di reduce(), non stai creando un nuovo array. Invece, stai passando l'oggetto newObj che hai modificato al prossimo ciclo di iterazione di reduce(). Alla fine di tutte le iterazioni, reduce() ritorna il valore finale di newObj, che è un singolo oggetto contenente tutte le proprietà che hai aggiunto o modificato durante le iterazioni.</p>
+	<p class="codice">
+		let risultato = [
+	{nome: "Zoff", ruolo: "portiere"},
+	{nome: "Cabrini", ruolo: "difensore"},
+	{nome: "Tardelli", ruolo: "centrale"},
+	{nome: "Rossi", ruolo: "attaccante"},
+];
+
+let team = risultato.reduce((newObj, el) => {
+	 newObj[el.ruolo] = el.nome;
+	 return newObj;
+}, {})
+
+console.log(team);
+	</p>
+
+<p>Inizio: newObj è {} (un oggetto vuoto), perché è il valore iniziale che hai fornito a reduce().
+
+Prima iterazione: Prendi il primo elemento dell'array risultato ({name: "Zoff", ruolo: "portiere"}), e aggiungi una proprietà a newObj dove la chiave è portiere e il valore è Zoff. Poi ritorni newObj, che ora è {portiere: "Zoff"}.
+
+Seconda iterazione: newObj ora inizia come {portiere: "Zoff"}. Aggiungi una nuova proprietà basata sul secondo elemento dell'array, risultando in {portiere: "Zoff", difensore: "Cabrini"}, e così via per gli altri elementi dell'array.
+
+Fine: Dopo l'ultima iterazione, ritorni newObj per l'ultima volta, e questo oggetto modificato è il risultato finale di reduce(). Questo risultato finale è l'oggetto che hai costruito, non un array.</p> 
 </main>
 <script src="./a2009_01.js"></script>
 </body>
