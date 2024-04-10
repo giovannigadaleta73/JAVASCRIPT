@@ -18,7 +18,7 @@
 	<details data-d="BASI">
 		<summary>BASI</summary>
 		<article>
-			<h1>OGGETTI [<a href="./BASE/oggetti/index.html">link</a>]</h1>
+			<h1>OGGETTI [<a href="./BASE/oggetti/oggetti_01.html">link</a>]</h1>
 			<h2>1. Oggetti Letterali</h2>
 			<h2>2. Oggetti Creati da Costruttori</h2>
 			<h2>3. Istanze di Classi</h2>
@@ -32,10 +32,51 @@
 		<article>
 			<h1>RegExp</h1>
 		</article>
-
-
 	</details>
-	<details data-d="ECMAScript2015"> 
+	<details>
+		<summary>ECMAScript 5 (2009)</summary>
+		<article data-d="ECMAScript_5">
+			<h1>map()</h1>
+			<p>esegue una funzione per ogni elemento di un array</p>
+			<p>restituisce un nuovo array</p>
+			<p class="codice">
+				const ages = people.map(person => person.age);
+				console.log(ages);
+			</p>
+			<h1>reduce()</h1>
+			<p>esegue un'operazione su ogni elemento mettendo il risultato in un accumulatore che può avere un valore
+				iniziale</p>
+			<p class="codice">
+				const numbers = [1, 2, 3, 4, 5];
+
+				// Utilizzo di reduce() per sommare tutti gli elementi
+				const sum = numbers.reduce((accumulator, current) => {
+				return accumulator + current;
+				}, 0); // 0 è il valore iniziale dell'accumulatore
+
+				console.log(sum);
+			</p>
+			<h1>reduce() per generare oggetti</h1>
+			<p class="codice">
+				// Array di oggetti
+				const products = [
+				{ name: 'Apple', price: 0.5 },
+				{ name: 'Orange', price: 0.8 },
+				{ name: 'Banana', price: 0.3 }
+				];
+
+				// Utilizzo di reduce() per creare un oggetto che mappa nomi di prodotti ai loro prezzi
+				const productMap = products.reduce((acc, product) => {
+				acc[product.name] = product.price;
+				return acc;
+				}, {});
+
+				console.log(productMap); // Output: { Apple: 0.5, Orange: 0.8, Banana: 0.3 }
+			</p>
+
+		</article>
+	</details>
+	<details data-d="ECMAScript2015">
 		<summary>ECMAScript2015</summary>
 		<article>
 			<h1>1. Let e Const</h1>
@@ -49,7 +90,7 @@
 			</p>
 		</article>
 		<article>
-			<h1>3. Moduli</h1>
+			<h1>3. Moduli [<a href="./ECMAScript2015/a2015_03/a2015_03.html">a2015_03</a>]</h1>
 			<p>Supporto nativo per i moduli, permettendo di esportare e importare esplicitamente funzioni, oggetti o
 				primitive da un modulo all'altro.
 			</p>
@@ -94,7 +135,8 @@
 			</p>
 		</article>
 		<article>
-			<h1>11. Iterators e For-Of Loop e Symbol.Iterator [<a href="./ECMAScript2015/a2015_11/a2015_11.html">link</a>]</h1>
+			<h1>11. Iterators e For-Of Loop e Symbol.Iterator [<a
+					href="./ECMAScript2015/a2015_11/a2015_11.html">link</a>]</h1>
 			<p>Introduzione di iteratori, oggetti che consentono di iterare su collezioni, e il ciclo for-of per
 				attraversare i valori di qualsiasi oggetto iterabile.</p>
 			<p>se vuoi usare un ciclo for...of su un oggetto personalizzato, quel oggetto deve implementare il metodo
@@ -102,19 +144,21 @@
 				puoi iterarli direttamente con for...of. Ma se crei un oggetto personalizzato e vuoi che sia iterabile
 				con for...of, devi definire esplicitamente Symbol.iterator e il metodo next() all'interno di esso.</p>
 			<p>
-				Il ciclo for...of è stato introdotto per iterare su qualsiasi oggetto iterabile. Gli oggetti iterabili includono array, stringhe, mappe, set e qualunque oggetto che implementi il metodo Symbol.iterator
+				Il ciclo for...of è stato introdotto per iterare su qualsiasi oggetto iterabile. Gli oggetti iterabili
+				includono array, stringhe, mappe, set e qualunque oggetto che implementi il metodo Symbol.iterator
 			</p>
 			<b>esempio con Array</b>
-				<p class="codice">
-					let array = [10, 20, 30, 40];
-					for (let value of array) {
-					  console.log(value); // Stampa 10, 20, 30, 40
-					}
-					
-				</p>
-				<b>for...of e Oggetti Non-Array</b>
-				<p>Gli oggetti JavaScript standard (cioè gli oggetti literal {}) non sono iterabili con for...of a meno che non definiscano esplicitamente un iteratore tramite Symbol.iterator</p>
-				<p class="codice"></p>
+			<p class="codice">
+				let array = [10, 20, 30, 40];
+				for (let value of array) {
+				console.log(value); // Stampa 10, 20, 30, 40
+				}
+
+			</p>
+			<b>for...of e Oggetti Non-Array</b>
+			<p>Gli oggetti JavaScript standard (cioè gli oggetti literal {}) non sono iterabili con for...of a meno che
+				non definiscano esplicitamente un iteratore tramite Symbol.iterator</p>
+			<p class="codice"></p>
 		</article>
 		<article>
 			<h1>12. Parametri di funzione migliorati [<a href="/ECMAScript2015/a2015_12/a2015_12.html">link</a>]</h1>
@@ -334,6 +378,38 @@
 			</p>
 		</article>
 	</details>
+	<details data-d="ECMAScript2020">
+		<summary>ECMAScript2020</summary>
+		<article>
+			<h1>1. Nullish coaleshing Operaror [<a href="./ECMAScript2020/a2020_01/a2020_01.html">??link</a>]</h1>
+			<p>
+				La sintassi è <u>A ?? B</u>, che può essere interpretata come:
+
+				Se A è null o undefined, valuta e restituisce B.
+				Altrimenti, restituisce A.
+			</p>
+
+			<p>
+				Usato per gestire esplicitamente casi comuni, come i valori mancanti o non definiti.
+
+				L'uso del Nullish Coalescing Operator in JavaScript è particolarmente utile perché permette una
+				distinzione chiara tra il controllo di null/undefined e altri "falsy values" come 0, NaN o '' (stringa
+				vuota), che sono considerati validi dall'operatore. Questo è particolarmente vantaggioso rispetto
+				all'operatore OR (||), che considera qualsiasi valore falsy come motivo per utilizzare l'alternativa.
+			</p>
+			<p class="codice">
+				let userNickname = null;
+				let defaultNickname = "Guest";
+				console.log(userNickname ?? defaultNickname); // Stampa "Guest"
+			</p>
+		</article>
+		<article>
+			<h1>2. Optional chainig [<a href="./ECMAScript2020/a2020_02/a2020_02.html">??link</a>]</h1>
+			<p></p>
+			<p class="codice"></p>
+		</article>
+
+	</details>
 	<details data-d="VARIE">
 		<summary>VARIE</summary>
 		<article>
@@ -370,12 +446,7 @@
 			</p>
 		</article>
 	</details>
-
-
-
 	<!-- 
-
-
 			<article >
 				<h1> [<a href="/ECMAScript2015/a2015_13/index.html">link</a>]</h1>
 				<p></p>

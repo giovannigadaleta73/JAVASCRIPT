@@ -10,36 +10,77 @@
 
 <body>
 	<main>
-	<a value="HOME" href="../../index.html">HOME</a>
-	<h1>Symbol</h1>
-	<p class="codice">
-		onsole.log(`>> Symbol definizione base`)
+		<a value="HOME" href="../../index.html">HOME</a>
+		<h1>Symbol</h1>
+		<p>
+			E' una proprietà 'nascosta' univoca. Ogni volta che assegno ad una variabile un Symbol questo genera un
+			volore univoco. Anche usando la stessa descrizione ad ogni invocazione di Symbol si ottiene un valore
+			diverso.
+		</p>
+		<p class="codice">
+			let myKey1 = Symbol('eventuale descrizione')
+		</p>
+		<p>Posso impostare una descrizione con <b>.for</b> e recuperarla con <b>.keyFor</b></p>
+		<p class="codice">
+			// descrizione rintracciabile:
+			let myKey2 = Symbol.for('descrizione')
+			Symbol.keyFor(myKey2) // descrizione
+		</p>
 
-		let myS1 = Symbol('casa')
-		console.log(myS1)
+		<p>Alcune operazioni di confronto:</p>
+		<p class="codice">
+			console.log(`>> Symbol definizione base`)
 
-		let myS2 = Symbol('casa')
+			let myS1 = Symbol('casa')
+			console.log(myS1)
 
-		console.log(myS1 == myS2)
+			let myS2 = Symbol('casa')
 
-		console.log(Symbol('casa') == Symbol('casa'))
+			console.log(myS1 == myS2) // false
+
+			console.log(Symbol('casa') == Symbol('casa'))
 
 
-		console.log(`>> Symbol.for`)
+			console.log(`>> Symbol.for`)
 
-		let myS3 = Symbol.for('auto')
-		let myS4 = Symbol.for('auto')
+			let myS3 = Symbol.for('auto')
+			let myS4 = Symbol.for('auto')
 
-		console.log(myS3 == myS4) // true
+			console.log(myS3 == myS4) // true
 
-		let myS5 = Symbol('auto')
+			let myS5 = Symbol('auto')
 
-		console.log(myS4 == myS5) // flase
+			console.log(myS4 == myS5) // flase
 
-		console.log(Symbol.keyFor(myS4)) // auto
-		console.log(Symbol.keyFor(myS1)) // undefined
-	</p>
-</main>
+			console.log(Symbol.keyFor(myS4)) // auto
+			console.log(Symbol.keyFor(myS1)) // undefined
+		</p>
+
+		<h2>Casi d'uso</h2>
+		<p>Uno degli usi più pratici e semplici di Symbol in JavaScript è come chiave unica per le proprietà di un
+			oggetto, per evitare conflitti di nome e mantenere alcune proprietà nascoste dal normale ciclo di
+			enumerazione. Questo può essere particolarmente utile in biblioteche o framework dove non si desidera
+			esporre certi dettagli implementativi o si vuole evitare che le proprietà interne vengano sovrascritte o
+			utilizzate in modo improprio dagli utenti del codice.
+		</p>
+		<b>Esempio: Proprietà Privata con Symbol</b>
+		<p>
+			Immagina di avere un modulo che gestisce le sessioni utente. Vuoi avere una proprietà che tenga traccia del
+			numero di sessioni attive, ma non vuoi che questa proprietà sia facilmente accessibile dall'esterno o che
+			entri in conflitto con altre proprietà potenzialmente aggiunte in seguito.</p>
+		[<b>esempio nel file js</b>]
+		<p>Simbolo come Chiave: Utilizziamo Symbol('activeSessions') come chiave per la proprietà che tiene traccia
+			delle sessioni attive. Questo garantisce che la chiave sia unica e non collida con altre proprietà, anche se
+			hanno lo stesso nome "descrittivo".
+
+			Metodi: La classe SessionManager utilizza questo simbolo per aggiornare e leggere il conteggio delle
+			sessioni attive internamente, senza esporre direttamente la proprietà al codice esterno.
+
+			Accesso Protetto: La proprietà è accessibile solo tramite i metodi della classe che conoscono il simbolo.
+			Ciò impedisce l'accesso casuale o il cambiamento della proprietà da parte del codice cliente che utilizza la
+			classe.</p>
+
+	</main>
 	<script src="/ECMAScript2015/a2015_10/a2015_10.js"></script>
 </body>
 

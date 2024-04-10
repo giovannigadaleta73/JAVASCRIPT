@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+	<main>
+		<a value="HOME" href="../../index.html">HOME</a>
+		<h2>Moduli</h2>
+
+		<p>Non inserisco in questa pagina tutti i file js, ma importo un file js e poi questo importerà a sua volta i
+			moduli js necessari.</p>
+		<p>Tre punti da seguire:</p>
+		<h3>1. type="module"</h3>
+		<p class="codice">
+			&ltscript src="./a2015_03.js"&gt
+			diventa
+			&ltscript type="module" src="./a2015_03.js"&gt
+		</p>
+		<h3>2. export</h3>
+		<p>Creo il file modulo e inserisco export</p>
+		<p class="codice">
+			export let numeri = [1,2,3,4,5]
+		</p>
+		<h3>3. import</h3>
+		<p class="codice">
+			import { numeri } from "./modulo.js";
+		</p>
+		<h2>Export multipli</h2>
+		<p>In alternativa a scrivere <b>export</b> davanti ad ogni elemento, posso scrivere un export a fine pagina</p>
+		<p class="codice">
+			let numeri = [1,2,3,4,5]
+			function saluta() {
+			console.log(`Ciao`)
+			}
+			class Persona{
+			constructor (nome, cognome){
+			this.nome = nome;
+			this.cognome = cognome;
+			}
+			}
+			export {numeri, saluta, Persona}
+		</p>
+		<p>in sostanza si tratta di un destructuring dell'oggetto esportato <b>export {numeri, saluta, Persona}</b></p>
+		<h2>Export selettivo</h2>
+		<p>esporto solo ciò che serve. Ad es potri volere usare nel moduo.js delle variabili o funzioni, ma non
+			esportarle.</p>
+		<p>Nell'esempio <b>saluta()</b> usa una variabile non esportata <b>numeri</b></p>
+
+		<p class="codice">
+			let numeri = ["Pippo", "Pluto", "Paperino"]
+			function saluta() {
+			console.log(`Ciao da ${numeri[2]}`)
+			}
+
+			export {saluta}
+		</p>
+		<p class="codice">
+			import { saluta } from "./modulo.js";
+			saluta() // ciao da Paperino
+		</p>
+
+		<h2>import * as</h2>
+		<p>nel file che importa posso usare questa sintassi per non elencare tutto. Da notare che DEVO dare un nome
+			all'importazione e anteporlo agli elementi richiamati. Serve per usare stessi nomi ma da moduli diversi
+			evitando conflitti. </p>
+		<p>da notare che nel modulo devo indicare cosa voglio esportare.</p>
+
+		<h2>import {A as B}</h2>
+
+		<p class="codice">
+			import {saluta, Persona as Pe} from "./modulo.js";
+
+			saluta()
+			const cliente1 = new Pe("Giuseppe", "Verdi")
+			cliente1.saluta()
+		</p>
+		<h2>export {A as B}</h2>
+		<h2>export default</h2>
+		<p>Un uso molto frequente quando ho un solo elemento da esportare (come nel caso dei Components) posso usare una
+			sintassi abbreviata e che prevede la possibilità di unsare as automaticamente.
+		</p>
+		<p>Quando uso questa sintassi (una classe / un componente per file) il file prende il lo stesso nome: Persona.js</p>
+		<p class="codice">
+			export default class Persona{
+			constructor (nome, cognome){
+			this.nome = nome;
+			this.cognome = cognome;
+			}
+			saluta() {
+			console.log(`Saluti dalla Classe Persona: ${this.nome}`)
+			}
+			}
+		</p>
+		<p class="codice">
+			import Pe from "./Persona.js";
+
+			const cliente1 = new Pe("Giuseppe", "Verdi")
+			cliente1.saluta()
+		</p>
+		<p>Scegliere tra export multiplo o export default implica una scelta tra avere multiple funzioni o racchiudere tutto in una classe (magari per argomento)</p>
+		
+	</main>
+
+	<script type="module" src="./a2015_03.js"></script>
+
+
+</body>
+
+</html>
