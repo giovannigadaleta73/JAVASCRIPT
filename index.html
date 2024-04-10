@@ -36,7 +36,7 @@
 	<details>
 		<summary>ECMAScript 5 (2009)</summary>
 		<article data-d="ECMAScript_5">
-			<h1>map()</h1>
+			<h1>map() [<a href="/ECMAScript_5/a2009_01/a2009_01.html">link</a>]</h1>
 			<p>esegue una funzione per ogni elemento di un array</p>
 			<p>restituisce un nuovo array</p>
 			<p class="codice">
@@ -58,20 +58,22 @@
 			</p>
 			<h1>reduce() per generare oggetti</h1>
 			<p class="codice">
-				// Array di oggetti
-				const products = [
-				{ name: 'Apple', price: 0.5 },
-				{ name: 'Orange', price: 0.8 },
-				{ name: 'Banana', price: 0.3 }
-				];
-
-				// Utilizzo di reduce() per creare un oggetto che mappa nomi di prodotti ai loro prezzi
-				const productMap = products.reduce((acc, product) => {
-				acc[product.name] = product.price;
-				return acc;
-				}, {});
-
-				console.log(productMap); // Output: { Apple: 0.5, Orange: 0.8, Banana: 0.3 }
+				let risultato = [
+				{nome: "Zoff", ruolo: "portiere"},
+				{nome: "Cabrini", ruolo: "difensore"},
+				{nome: "Tardelli", ruolo: "centrale"},
+				{nome: "Rossi", ruolo: "attaccante"},
+			];
+			
+			let team = risultato.reduce((newObj, el) => {
+				 newObj[el.ruolo] = el.nome;
+				 return newObj;
+			}, {})
+			
+			console.log(team);
+			/*
+			{portiere: 'Zoff', difensore: 'Cabrini', centrale: 'Tardelli', attaccante: 'Rossi'}
+			*/
 			</p>
 
 		</article>
