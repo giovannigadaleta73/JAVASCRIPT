@@ -1,3 +1,4 @@
+// crea oggetto
 let risultato = [
 	{nome: "Zoff", ruolo: "portiere"},
 	{nome: "Cabrini", ruolo: "difensore"},
