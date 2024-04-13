@@ -48,3 +48,18 @@ Per verificare ciò devo usare some()
 
 const isL2 = testo.some(parola => parola.includes("l"));
 console.log(` uso di some: ${isL2}`);
+
+console.log(`>> filter() con array`);
+/*
+Restituisce un nuovo array con i soli elementi che soddisfano la callback
+*/
+
+const risFilter = testo.filter(el => el.includes("i"))
+console.log(risFilter)
+
+
+console.log(`>> filter() con oggetti`);
+
+const risFilterObject = risultato.filter(el => el.ruolo == "portiere")
+console.log(risFilterObject)
+
