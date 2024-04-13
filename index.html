@@ -39,8 +39,17 @@
 			<h1>map() reduce() some() filter()[<a href="./ECMAScript_5/a2009_01/a2009_01.html">link</a>]</h1>
 			<p>Sono metodi per Array.</p>
 
-			<p>Per usarli sugli oggetti, devo fare un passaggio intermedio trasformandoli in Array: usando <b>Object.keys(), Object.values(), o Object.entries()</b> per convertire un oggetto rispettivamente nelle sue chiavi, nei suoi valori, o in un array di coppie chiave-valore</p>
-			
+			<p>Per usarli sugli oggetti, devo fare un passaggio intermedio trasformandoli in Array:
+			</p>
+			<p>
+				<b>Object.keys(), Object.values(), o Object.entries()</b> per convertire un oggetto rispettivamente
+				nelle sue chiavi, nei suoi valori, o in un array di coppie chiave-valore
+			</p>
+			<p class="codice">
+				const increasedEntries = Object.entries(obj).map(([key, value]) => [key, value + 1]);
+				console.log(Object.fromEntries(increasedEntries)); // { a: 2, b: 3, c: 4 }
+			</p>
+
 
 		</article>
 	</details>
@@ -413,6 +422,27 @@
 				console.log(obj.dynamicName); // Outputs: value1
 			</p>
 		</article>
+		<article>
+			<h1>5. Scroll [<a href="./VARIE/scroll/scroll.html">link</a>]</h1>
+			<p>In js lo scroll è un evento della finestra che si può gestire</p>
+		</article>
+		<article>
+			<h1>6. Json [<a href="./VARIE/json/json.html">link</a>]</h1>
+			<p>Come si fa il parsing da formato Json (=stringa) a formato JS (=oggetto)</p>
+			<p class="codice">
+				//da stringa Json a oggetto Js
+				const persone = JSON.parse(data);
+				
+				//da oggetto Js a stringa Json (per poterlo inviare al back-end)
+				const stringaJson = JSON.stringify(persone);
+
+				//da stringa Json a oggetto Js
+				fetch('./data.json')
+				.then(response => response.json())
+				.then(info => console.log(info))
+			</p>
+		</article>
+
 	</details>
 	<!-- 
 			<article >

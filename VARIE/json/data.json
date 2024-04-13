@@ -1,0 +1,18 @@
+[
+	{
+		"nome": "Luca",
+		"cognome": "Rossi",
+		"età": 28,
+		"isSposato": true,
+		"figli": [
+			"Massimo",
+			"Roberto"
+		]
+	},
+	{
+		"nome": "Mario",
+		"cognome": "Verdi",
+		"età": 36,
+		"isSposato": false
+	}
+]
