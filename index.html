@@ -432,7 +432,7 @@
 			<p class="codice">
 				//da stringa Json a oggetto Js
 				const persone = JSON.parse(data);
-				
+
 				//da oggetto Js a stringa Json (per poterlo inviare al back-end)
 				const stringaJson = JSON.stringify(persone);
 
@@ -440,6 +440,24 @@
 				fetch('./data.json')
 				.then(response => response.json())
 				.then(info => console.log(info))
+			</p>
+			<p>posso poi mandare a schermo creando un elemento html</p>
+			<p class="codice">
+				const divElement = document.createElement("div")
+			</p>
+			<p>inserendo il testo e inserendolo nel body</p>
+			<p class="codice">
+				divElement.innerHTML = ...
+				document.body.appendChild(divElement);
+			</p>
+			<h2> Ricorda l' Optional chaining quando ricevi dati, soprattutto non sql</h2>
+			<p class="codice">
+				${element.figli?.join(', ')} mosta a schermo undefined: poich' la proprietà è undefined js non applica
+				.join(', ') che andrebbe in errore.
+				a questo punto gestisco undefined:
+				${element.figli?.join(', ') ?? "Nessun figlio"}
+				versione breve per:
+				${element.figli ? 'figli:'+element.figli.join(', ') : 'Nessun figlio'}</p>`;
 			</p>
 		</article>
 

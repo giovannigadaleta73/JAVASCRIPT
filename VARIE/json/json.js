@@ -30,4 +30,26 @@ console.log(stringaJson);
 console.log(`>> fetch json()`);
 fetch('./data.json')
 .then(response => response.json())
-.then(info => console.log(info))
+.then(dati => {
+	dati.forEach(element => {
+		const divElement = document.createElement("div")
+		divElement.innerHTML = `
+		<h2> ${element.nome} </h2>
+		<p>${element.sposato ? 'sposato' : 'Celibe'}</p>
+		<p>${element.età} anni</p>
+		<p>${element.figli?.join(', ') ?? "Nessun figlio"}</p>`
+		
+
+		document.body.appendChild(divElement);
+	});
+
+})
+/*<p>${element.figli ? 'figli:'+element.figli.join(', ') : 'Nessun figlio'}</p>`;
+${element.figli?.join(', ')} mosta a schermo undefined: poich' la proprietà è undefined js non applica .join(', ') che andrebbe in errore.
+ a questo punto gestisco undefined:
+${element.figli?.join(', ') ?? "Nessun figlio"}
+versione breve per:
+${element.figli ? 'figli:'+element.figli.join(', ') : 'Nessun figlio'}</p>`;
+
+
+*/
