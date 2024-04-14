@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+	<main>
+		<a value="HOME" href="../../index.html">HOME</a>
+
+		<h2>Custom event</h2>
+
+		<h2>payload</h2>
+
+		<p>
+			Nella creazione di un Custom Event posso passare dei dati: solo un elemento che potrà essere qualsiasi tipo
+			di dato. Accetta anche oggetti array nidificati
+			<p class="codice">
+				//
+
+				const customEvent2 = new CustomEvent('prova2', { detail: [{ nome: "Luca", cognome: "Rossi" }, { nome: "Emilio", cognome: "Verdi" }] });
+		
+				window.addEventListener('prova2', (payload) => {
+					console.log('Evento Custom Avviato', payload.detail)
+				})
+			</p>
+		</p>
+		<p class="codice">
+			// Funzione per generare e inviare un evento personalizzato con dati dinamici
+			function inviaEvento(nome, cognome) {
+			const evento = new CustomEvent('eventoPersonalizzato', {
+			detail: {
+			nome: nome,
+			cognome: cognome
+			}
+			});
+			document.dispatchEvent(evento);
+			}
+
+			// Aggiunta di un listener per l'evento
+			document.addEventListener('eventoPersonalizzato', function(e) {
+			console.log('Nome ricevuto:', e.detail.nome);
+			console.log('Cognome ricevuto:', e.detail.cognome);
+			});
+
+			// Chiamata alla funzione inviaEvento con dati dinamici
+			inviaEvento('Luca', 'Rossi');
+			inviaEvento('Maria', 'Bianchi');
+		</p>
+		<p>Creazione dell'evento: La funzione inviaEvento prende due parametri, nome e cognome, e usa questi valori per
+			creare il campo detail di un CustomEvent.
+			Dispatch dell'evento: L'evento viene inviato (o "dispatched") tramite document.dispatchEvent(evento).
+			Ascolto dell'evento: Un listener per l'evento eventoPersonalizzato è aggiunto al documento, e quando
+			l'evento viene ricevuto, i dettagli vengono estratti dall'evento e loggati alla console.</p>
+
+		<h2>Esempi dello script integrato nel file:</h2>
+		<button onclick="window.dispatchEvent(customEvent)">Avvia</button>
+		<button onclick="window.dispatchEvent(customEvent2)">Avvia 2</button>
+	</main>
+	<script>
+		// Custom event richiamato da un button
+		const customEvent = new CustomEvent('prova');
+
+		window.addEventListener('prova', () => {
+			console.log('Evento Custom Avviato')
+		})
+
+		// Custom event inserito in uno script
+		function Contatore() {
+			this.numero = 0;
+			let intervalId = setInterval(() => {
+				this.numero++;
+
+				window.dispatchEvent(customEvent);
+
+				if (this.numero >= 3) {
+					clearInterval(intervalId);
+				}
+			}, 3000);
+		}
+		new Contatore();
+		//{ nome: "Luca", cognome: "Rossi" }, { nome: "Emilio", cognome: "Verdi" }
+		// payload
+		const customEvent2 = new CustomEvent('prova2', { detail: true });
+
+		window.addEventListener('prova2', (payload) => {
+			console.log('Evento Custom Avviato', payload.detail) //{ nome: "Luca", cognome: "Rossi" }
+		})
+
+	</script>
+</body>
+
+</html>
