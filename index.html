@@ -460,6 +460,19 @@
 				${element.figli ? 'figli:'+element.figli.join(', ') : 'Nessun figlio'}</p>`;
 			</p>
 		</article>
+		<article >
+			<h1>7. Errori [<a href="./VARIE/gestione_errori/errori.html">link</a>]</h1>
+			<h2>Gestione errori</h2>
+			<p><b>try{ ... } catch(error){ }</b> evita che un errore blocchi l'esecuzione</p>
+			<p><b>try{ ... } catch(error) { ... }</b> evita che un errore blocchi l'esecuzione e gestisco l'errore</p>
+			<p><b>try{ ... } catch(error) { ... } finally { ... }</b> esegue del codice al termine, anche se c'è stato un errore</p>
+			<h2>Generazione di un errore</h2>
+			<p><b>if( ... ){throw new Error('Testo...')}</b> se si verifica una condizione sollevo volontariamente un avviso di errore</p><p>un caso può essere durante la validazione:
+				<b>parseInt ... if(isNan){throw new Error('Testo...')}</b>
+			</p>
+
+			<p class="codice"></p>
+		</article>
 
 	</details>
 	<!-- 

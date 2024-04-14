@@ -14,5 +14,12 @@
 		"cognome": "Verdi",
 		"età": 36,
 		"isSposato": false
+	},
+	{
+		"nome": "Dario",
+		"cognome": "Neri",
+		"età": 50,
+		"isSposato": true,
+		"figli": []
 	}
 ]
