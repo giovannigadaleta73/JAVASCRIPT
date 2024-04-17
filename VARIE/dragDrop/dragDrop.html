@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="../../style.css">
+
+</head>
+
+<body>
+	<main>
+		<a value="HOME" href="../../index.html">HOME</a>
+
+		<h2>Drag and Drop - Versione 2 [<a href="./dragDrop2.html">link</a>]</h2>
+		<ul id="sortable-list">
+
+		</ul>
+	</main>
+	<script src="./dragDrop.js">
+
+	</script>
+</body>
+<style>
+	ul {
+		padding: 10px;
+		background-color: rgb(36, 36, 36);
+		cursor: grab;
+		list-style-type: none;
+		margin: auto;
+		width: fit-content;
+		border-radius: 10px;
+	}
+	li {
+		color: aliceblue;
+		width: 100px;
+		height: 24px;
+		padding: 5px;
+		margin: 5px;
+		border-radius: 10px;
+		border: #dddddd 2px solid;
+		
+		transition: opacity 0.3s;
+	}
+	li.dragging {
+		opacity: 0.5;
+
+	}
+</style>
+
+</html>

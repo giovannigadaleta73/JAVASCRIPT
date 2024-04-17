@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+	<main>
+		<a value="HOME" href="../../index.html">HOME</a>
+
+		<h2>localStorage</h2>
+		<button onclick="salva()">Salva</button>
+		<button onclick="recupera()">recupera</button>
+	</main>
+	<script>
+const team = [
+{nome: "Zoff", ruolo: "portiere"},
+{nome: "Cabrini", ruolo: "difensore"},
+{nome: "Tardelli", ruolo: "centrale"},
+{nome: "Rossi", ruolo: "attaccante"},
+];
+
+		function salva() {
+			localStorage.setItem('team', JSON.stringify(team))
+		}
+		function recupera() {
+			const valore = JSON.parse(localStorage.getItem('team'));
+			console.log(valore);
+		}
+	</script>
+</body>
+
+</html>

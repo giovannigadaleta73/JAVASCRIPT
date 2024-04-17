@@ -357,8 +357,9 @@
 	</details>
 	<details data-d="ECMAScript2020">
 		<summary>ECMAScript2020</summary>
-		<article>
+		<article data-d="1. Nullish coaleshing Operaror">
 			<h1>1. Nullish coaleshing Operaror [<a href="./ECMAScript2020/a2020_01/a2020_01.html">??link</a>]</h1>
+			<p><b>A ?? B</b></p>
 			<p>
 				La sintassi è <u>A ?? B</u>, che può essere interpretata come:
 
@@ -366,26 +367,148 @@
 				Altrimenti, restituisce A.
 			</p>
 
-			<p>
-				Usato per gestire esplicitamente casi comuni, come i valori mancanti o non definiti.
 
-				L'uso del Nullish Coalescing Operator in JavaScript è particolarmente utile perché permette una
-				distinzione chiara tra il controllo di null/undefined e altri "falsy values" come 0, NaN o '' (stringa
-				vuota), che sono considerati validi dall'operatore. Questo è particolarmente vantaggioso rispetto
-				all'operatore OR (||), che considera qualsiasi valore falsy come motivo per utilizzare l'alternativa.
-			</p>
 			<p class="codice">
-				let userNickname = null;
-				let defaultNickname = "Guest";
-				console.log(userNickname ?? defaultNickname); // Stampa "Guest"
+				let test_1; // Con a = undefined => B
+				let test_2 = null; // Con a = null => B
+
+				// i seguenti sono tutti accettati => A
+				let test_3 = 0;
+				let test_4 = "";
+				let test_5 = [3,4];
+				let test_6 = [];
+				let test_7 = {};
 			</p>
 		</article>
-		<article>
+		<article data-d="2. Optional chainig">
 			<h1>2. Optional chainig [<a href="./ECMAScript2020/a2020_02/a2020_02.html">??link</a>]</h1>
-			<p></p>
-			<p class="codice"></p>
+			<p><b>valore?.proprietà</b></p>
+			<p>Si susa in situazioni di incertezza come risultati da una query. Quando uso gli oggetti (es. ricevo un
+				risultato in json) se una chiave non è settata ottengo "undefined" e se cerco una sotto proprietà di una
+				undefined ricevo un errore. L'operatore "?." cattura questo errore e restituisce "undefined" </p>
 		</article>
 
+	</details>
+	<details data-d="ECMAScript2021">
+		<summary>ECMAScript2021</summary>
+		<article data-d="1. Metodi String: replaceAll">
+			<h1>1. Metodi String: replaceAll</h1>
+			<p><i>Una nuova funzionalità molto richiesta è il metodo replaceAll per le stringhe. Questo metodo consente
+					di sostituire tutte le occorrenze di una sottostringa con un'altra sottostringa, non solo la prima
+					occorrenza come fa replace.</i></p>
+			<p class="codice">const phrase = "Foo Bar Foo";
+				const newPhrase = phrase.replaceAll("Foo", "Bar");
+				console.log(newPhrase); // "Bar Bar Bar"
+			</p>
+		</article>
+		<article data-d="2. Promise.any">
+			<h1>2. Promise.any</h1>
+			<p><i>Promise.any è un metodo che accetta un array di Promises e risolve non appena una delle promesse
+					nell'array si risolve. Si differenzia da Promise.race perché ignora i rifiuti finché almeno una
+					promessa non viene risolta. Se tutte le promesse sono rifiutate, restituisce un errore
+					AggregateError.</i></p>
+			<p class="codice">const promise1 = Promise.reject(0);
+				const promise2 = new Promise((resolve) => setTimeout(resolve, 100, 'quick'));
+				const promise3 = new Promise((resolve) => setTimeout(resolve, 500, 'slow'));
+
+				const promises = [promise1, promise2, promise3];
+
+				Promise.any(promises).then((value) => console.log(value)); // "quick"
+			</p>
+		</article>
+		<article data-d="3. Separatore numerico">
+			<h1>3. Separatore numerico</h1>
+			<p><i>Il separatore numerico consente di rendere più leggibili i numeri lunghi usando il carattere di
+					underscore (_) come separatore delle cifre.</i></p>
+			<p class="codice">
+				const amount = 1_000_000_000;
+				console.log(amount); // 1000000000
+			</p>
+		</article>
+		<article data-d="4. Logical Assignment Operators">
+			<h1>4. Logical Assignment Operators</h1>
+			<p><i>
+					Gli operatori di assegnazione logica combinano gli operatori logici (AND &&, OR ||, e NULLISH ??)
+					con l'assegnazione. Questo riduce la necessità di scrivere codice verboso per alcune operazioni
+					comuni.
+				</i></p>
+			<p class="codice">
+				let a = 1;
+				let b = null;
+
+				a ||= 5;
+				console.log(a); // 1
+
+				b &&= 5;
+				console.log(b); // null
+
+				let c = null;
+				c ??= 5;
+				console.log(c); // 5
+
+			</p>
+		</article>
+		<article data-d="5. WeakRef e FinalizationRegistry">
+			<h1>5. WeakRef e FinalizationRegistry</h1>
+			<p><i>WeakRef consente di tenere un riferimento debole a un oggetto, che non impedisce al garbage collector
+					di cancellare l'oggetto, mentre FinalizationRegistry fornisce un modo per eseguire callback quando
+					gli oggetti sono garbage-collected.</i></p>
+		</article>
+	</details>
+	<details data-d="ECMAScript2022">
+		<summary>ECMAScript2022</summary>
+		<article data-d="1. Class Fields (Campi delle classi)">
+			<h1>1. Class Fields (Campi delle classi)</h1>
+		</article>
+		<article data-d="2. Top Level await">
+			<h1>2. Top Level await</h1>
+			<p><i>Il top level await permette l'uso di await al di fuori di una funzione async all'interno dei moduli
+					JavaScript. Questo rende il codice asincrono più facile da scrivere e da leggere, soprattutto quando
+					si lavora con moduli che dipendono da risorse asincrone.</i></p>
+			<p class="codice">// In un modulo JS, puoi ora fare:
+				const dynamicData = await fetch('https://api.example.com/data');
+				console.log(dynamicData.json());
+			</p>
+		</article>
+		<article data-d="3. Ergonomic Brand Checks for Private Fields">
+			<h1>3. Ergonomic Brand Checks for Private Fields</h1>
+			<p><i>Questa aggiunta consente di controllare più ergonomicamente se un oggetto ha un determinato campo
+					privato, utilizzando una nuova sintassi che genera un errore in caso di assenza, invece di
+					restituire semplicemente false</i></p>
+		</article>
+		<article data-d="4. .at() Method for Arrays and Typed Arrays">
+			<h1>4. .at() Method for Arrays and Typed Arrays</h1>
+			<p><i>Il metodo .at() è stato aggiunto per semplificare l'accesso agli elementi di un array, permettendo un
+					accesso più facile agli elementi dall'inizio o dalla fine dell'array usando un indice positivo o
+					negativo.</i></p>
+			<p class="codice">
+				const array = [10, 20, 30, 40, 50];
+				console.log(array.at(-1)); // 50
+				console.log(array.at(0)); // 10
+			</p>
+		</article>
+		<article data-d="5. Object.hasOwn()">
+			<h1>5. Object.hasOwn()</h1>
+			<p><i>Questa è una nuova funzione statica aggiunta a Object per verificare se un oggetto possiede una
+					proprietà come propria (non ereditata). È un'alternativa a Object.prototype.hasOwnProperty() che
+					evita alcuni dei problemi legati all'ereditarietà di hasOwnProperty.</i></p>
+			<p class="codice">
+				const obj = { a: 1 };
+				console.log(Object.hasOwn(obj, 'a')); // true
+				console.log(Object.hasOwn(obj, 'toString')); // false
+
+			</p>
+		</article>
+		<article data-d="6. Formatting API for Intl: Intl.ListFormat">
+			<h1>6. Formatting API for Intl: Intl.ListFormat</h1>
+			<p><i>La nuova API Intl.ListFormat permette di formattare liste di elementi secondo le convenzioni locali,
+					che è utile per la localizzazione delle applicazioni.</i></p>
+			<p class="codice">
+				const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+				console.log(formatter.format(['Alice', 'Bob', 'Charlie'])); 
+				// Alice, Bob, and Charlie
+			</p>
+		</article>
 	</details>
 	<details data-d="VARIE">
 		<summary>VARIE</summary>
@@ -460,31 +583,96 @@
 				${element.figli ? 'figli:'+element.figli.join(', ') : 'Nessun figlio'}</p>`;
 			</p>
 		</article>
-		<article >
+		<article>
 			<h1>7. Errori [<a href="./VARIE/gestione_errori/errori.html">link</a>]</h1>
 			<h2>Gestione errori</h2>
 			<p><b>try{ ... } catch(error){ }</b> evita che un errore blocchi l'esecuzione</p>
 			<p><b>try{ ... } catch(error) { ... }</b> evita che un errore blocchi l'esecuzione e gestisco l'errore</p>
-			<p><b>try{ ... } catch(error) { ... } finally { ... }</b> esegue del codice al termine, anche se c'è stato un errore</p>
+			<p><b>try{ ... } catch(error) { ... } finally { ... }</b> esegue del codice al termine, anche se c'è stato
+				un errore</p>
 			<h2>Generazione di un errore</h2>
-			<p><b>if( ... ){throw new Error('Testo...')}</b> se si verifica una condizione sollevo volontariamente un avviso di errore</p><p>un caso può essere durante la validazione:
+			<p><b>if( ... ){throw new Error('Testo...')}</b> se si verifica una condizione sollevo volontariamente un
+				avviso di errore</p>
+			<p>un caso può essere durante la validazione:
 				<b>parseInt ... if(isNan){throw new Error('Testo...')}</b>
 			</p>
 
-			<p class="codice"></p>
 		</article>
-		<article >
+		<article>
 			<h1>8. Custom event [<a href="./VARIE/customevent/event.html">link</a>]</h1>
 			<p>creo l'evento</p>
 			<p>creo il listener con all'interno la callback</p>
 			<p>creo il dispatch (attivatore)</p>
-			<p>Caso più comune di uso: svolgo un task e alla conclusione dispaccio un evento, i listener interessati si attivano</p>
-			<p class="codice"></p>
+			<p>Caso più comune di uso: svolgo un task e alla conclusione dispaccio un evento, i listener interessati si
+				attivano</p>
+		</article>
+		<article>
+			<h1>9. localStorage [<a href="./VARIE/localStorage/localStorage.html">link</a>]</h1>
+
+			<p>Salva in locale fino a 5mb in formato stringa. Quindi prima di salvare qualcosa che non sia una stringa
+				dobbiamo usare <b>JSON.stringify( ... )</b> e poi <b>JSON.parse( ... )</b>
+				Viene usato per salvare in locale le preferenze utente e altre informazioni che non voglioamo ospitare
+				su server. Non devono contenere dati sensibili poichè sono visibili dall'utente tramitte il tasto "F12"
+			<ul>
+				<li>localStorage.<b>setItem</b>('isTemaScuro',true)</li>
+				<li>const info = localStorage.<b>getItem</b>('isTemaScuro');</li>
+			</ul>
+			</p>
+			<p>
+			<ul>
+				<li>localStorage.<b>setItem</b>('preferenze', JSON.stringify(preferenze))</li>
+				<li>const info = JSON.parse(localStorage.<b>getItem</b>('preferenze'));</li>
+			</ul>
+			</p>
+			<p>
+			<ul>
+				<li>localStorage.<b>removeItem</b>('preferenze');</li>
+			</ul>
+			</p>
+
+		</article>
+		<article> 10. Drag and Drop
+			<h1> [<a href="./VARIE/dragDrop/dragDrop.html">link</a>]</h1>
+			<p>gli eventi coinvolti nel drag and drop:
+				<b>oggetto draggable="true"</b>
+			<ul>
+				<li>dragstart</li>
+				<li>drag</li>
+				<li>gragend</li>
+			</ul>
+			<b>area contenitore</b>
+			<li>dragenter</li>
+			<li>dragover</li>
+			<li>dragleave</li>
+			<li>drop</li>
+			</p>
+			<p class="codice">
+				const mela = document.getElementById('mela');
+				const cestino = document.getElementById('cestino');
+
+				mela.addEventListener('dragstart', handleDragStart);
+				mela.addEventListener('dragend', handleDragEnd);
+
+				function handleDragStart() {
+				console.log('Drag Start')
+				mela.style.opacity=1;
+				}
+
+				function handleDragEnd() {
+				console.log('Drag End')
+				mela.style.backgroundColor="grey";
+				}
+			</p>
 		</article>
 
 	</details>
 	<!-- 
-			<article >
+			<article data-d="">
+				<h1></h1>
+				<p><i></i></p>
+				<p class="codice"></p>
+			</article>
+			<article data-d="">
 				<h1> [<a href="./ECMAScript2015/a2015_13/index.html">link</a>]</h1>
 				<p></p>
 				<p class="codice"></p>
@@ -492,7 +680,7 @@
 		
 			<details>
 				<summary></summary>
-				<article >
+				<article data-d="">
 					<h1></h1>
 					<p></p>
 					<p class="codice"></p>
