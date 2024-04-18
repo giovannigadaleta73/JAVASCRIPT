@@ -44,3 +44,21 @@ fetch('./data.json')
 	});
 })
 
+
+function calcolaMassimoMinimoArray(numeri) {
+	const massimo = Math.max(...numeri);
+	const minimo = Math.min(...numeri);
+  
+	return {
+	  massimo,
+	  minimo,
+	};
+  }
+  
+  const arrayNumeri = [10, 5, 8, 2, 6];
+  const risultato = calcolaMassimoMinimoArray(arrayNumeri);
+  
+  console.log("Massimo:", risultato.massimo);
+  console.log("Minimo:", risultato.minimo);
+  console.log("Risultato:", risultato);
+

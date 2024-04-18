@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="../../style.css" >
+</head>
+
+<body>
+	<main>
+	<a value="HOME" href="../../index.html">HOME</a>
+	
+	<h2>Unione</h2>
+	<p><b>concat()</b> e <b>spread operator</b> danno lo stesso risultato</p>
+	<p class="codice">
+		const unione1 = arr1.concat(arr2);
+		const unione3 = [...arr1,...arr2];
+	</p>
+
+	<h2>Unione senza duplicati</h2>
+	<p><b>new Set</b> elimina i duplicati, ma poi devo riconvertire in Array</p>
+	<p class="codice">
+		let unione8 = [...new Set([...arrD1, ...arrD2])];
+	</p>
+	<!-- 
+	<h2></h2>
+	<p></p>
+	<p class="codice"></p>
+	--> 
+</main>
+<script src="./array_01.js"></script>
+</body>
+
+</html>
